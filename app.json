@@ -1,0 +1,12 @@
+{
+  "name": "MicroLendingApp",
+  "displayName": "MicroLendingApp",
+  "expo": {
+    "name": "MicroLendingApp",
+    "slug": "MicroLendingApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

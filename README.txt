@@ -1,0 +1,1 @@
+This is the repository for Dr. Lewis's Software Engineering course. Our group consists of Aleks Krbanjevic, Victor Rakotondranoro, and Miraj Brahmbhatt.

@@ -119,20 +119,29 @@ class HomeScreen extends React.Component {
       );
   }
 }
-
+//This page is what comes after successful log in. Here you choose whether you want to see manager view or regular view.
 class MainScreen extends React.Component {
+
+  goToManagementPage = (navigate) => {
+    navigate('Manager')
+  }
+
+  goToRegUserPage = (navigate) => {
+    navigate('RegUser')
+  }
+
   render() {
     return (
       <Container style={styles2.container}>
         <Text style={styles2.mainManagerHeader}>Manager</Text>
-        <Button full rounded success>
+        <Button full rounded success onPress = {()=> this.goToManagementPage(this.props.navigation.navigate)}>
           <Text style = {{color:'white'}}>
             Go to Management Page
           </Text>
         </Button>
         <Text style={styles2.mainRegularHeader}>User</Text>
-        <Button full rounded success>
-          <Text style = {{color:'white'}}>
+        <Button full rounded success onPress = {()=> this.goToRegUserPage(this.props.navigation.navigate)} >
+          <Text style = {{color:'white'}} >
             Go to regular user Page
           </Text>
         </Button>
@@ -142,9 +151,28 @@ class MainScreen extends React.Component {
   }
 }
 
+//This is where the action of the manager-related stuff should take place.
+class ManagerScreen extends React.Component {
+  render() {
+    return (
+      <Text>Welcome to the Management Page! (I assume you guys will style this) </Text>
+    )
+  }
+}
+//Where the regular user-related stuff should take place.
+class RegUserScreen extends React.Component {
+  render() {
+    return (
+      <Text>Welcome to the Banking Page! (I assume you guys will style this) </Text>
+    )
+  }
+}
+
 const AppNavigator = createStackNavigator({
     Home: HomeScreen,
-    Main: MainScreen
+    Main: MainScreen,
+    Manager: ManagerScreen,
+    RegUser: RegUserScreen
   },
     {
       initialRouteName: 'Home'
@@ -197,5 +225,6 @@ const styles2 = StyleSheet.create({
   bottomSpace: { //this container is used to keep buttons above the ios home button.
     flex: 1
   }
+
 })
 

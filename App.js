@@ -60,6 +60,18 @@ class HomeScreen extends React.Component {
     }
   }
 
+  forgotPassword = (email) => {
+    try {
+      var auth = firebase.auth();
+      //var emailAddress = email;
+      auth.sendPasswordResetEmail(email).then(function(user) {
+        console.log('Reset email sent!');
+      })
+    } catch (error) {
+      console.log('Error');
+    }
+  }
+
   render() {
     return (  
     <Container style={styles.container}>
@@ -97,7 +109,7 @@ class HomeScreen extends React.Component {
             <Text style={{color: 'white'}}>Sign-Up</Text>
           </Button>
           <Button style = {{marginTop: 10}}
-          full rounded danger>
+          full rounded danger onPress = {()=> this.forgotPassword(this.state.email)} >
             <Text style={{color: 'white'}}>
               Forgot Password
             </Text>
@@ -115,13 +127,13 @@ class MainScreen extends React.Component {
         <Text style={styles2.mainManagerHeader}>Manager</Text>
         <Button full rounded success>
           <Text style = {{color:'white'}}>
-            Log-In
+            Go to Management Page
           </Text>
         </Button>
         <Text style={styles2.mainRegularHeader}>User</Text>
         <Button full rounded success>
           <Text style = {{color:'white'}}>
-            Log-In
+            Go to regular user Page
           </Text>
         </Button>
         <Container style={styles2.bottomSpace}></Container>

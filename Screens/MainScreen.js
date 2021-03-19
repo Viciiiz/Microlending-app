@@ -1,13 +1,27 @@
 import {Button, Content, Header, Form, Input, Item, Label, Container} from 'native-base';
 import { StyleSheet, Text, View } from 'react-native';
 import * as React from 'react';
+import firebase, { database } from 'firebase';
 class MainScreen extends React.Component {
 
     goToManagementPage = (navigate) => {
-      navigate('Manager')
+      var user = firebase.auth().currentUser;
+      var userEmail = firebase.auth().currentUser.email.replace(".","");
+      //console.log(userID);
+      var ref = firebase.database().ref("users");
+      ref.orderByChild("status").on("child_added", function(snapshot) {
+        //console.log(snapshot.key + " is " + snapshot.val().status); used for testing
+        if(snapshot.val().status == "manager") {
+          navigate('Manager')
+        }
+        else if(snapshot.val().status == "regular") {
+          alert('You need Manager permission!');
+        }
+      });
     }
-  
+    
     goToRegUserPage = (navigate) => {
+
       navigate('RegUser')
     }
   

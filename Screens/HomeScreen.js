@@ -13,7 +13,24 @@ class HomeScreen extends React.Component {
         password: ''
       })
     }
-  
+
+    //This function is used to add a new entry to the users table in Firebase DB. 
+    writeUserData = (email, status) => {
+      try {
+        var database = firebase.database();
+        var userIdentifier2 = String(email);
+        firebase.database().ref('users/').set({
+        [userIdentifier2]: {
+          user: email,
+          status: status
+          }
+        });
+
+      } catch (error) {
+        console.log(error.toString())
+      }
+    }
+    
     signUpUser = (email, password) =>{
       try {
         if(this.state.password.length<6) {
@@ -22,6 +39,13 @@ class HomeScreen extends React.Component {
         }
         else {
           firebase.auth().createUserWithEmailAndPassword(email, password)
+          //Making assumption that only managers have the email ending of @MicroLendMgmt.com
+          var status = "regular"
+          var email2 = email.replace(".","");
+          if(email2.includes("MicroLendingMgmtcom")) {
+            status = "manager"
+          }
+          this.writeUserData(email2, status);
         }
       } catch (error) {
         console.log(error.toString())

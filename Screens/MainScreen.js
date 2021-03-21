@@ -1,27 +1,41 @@
 import {Button, Content, Header, Form, Input, Item, Label, Container} from 'native-base';
 import { StyleSheet, Text, View } from 'react-native';
 import * as React from 'react';
-import firebase, { database } from 'firebase';
+import firebase from 'firebase';
+import 'react-navigation'; 
+import 'react-navigation-stack';
+
 class MainScreen extends React.Component {
 
+
     goToManagementPage = (navigate) => {
-      var user = firebase.auth().currentUser;
+      //var user = firebase.auth().currentUser;
       var userEmail = firebase.auth().currentUser.email.replace(".","");
-      //console.log(userID);
+      
       var ref = firebase.database().ref("users");
-      ref.orderByChild("status").on("child_added", function(snapshot) {
-        //console.log(snapshot.key + " is " + snapshot.val().status); used for testing
-        if(snapshot.val().status == "manager") {
-          navigate('Manager')
+      ref.orderByChild(userEmail).on("child_added", function(snapshot) {
+        var snapshotVal = snapshot.val();
+        //console.log(snapshotVal);
+        var currentlyManager = false;
+        //Firebase snapshot of users object is turned into JS object, and then we iterate line by line. If prev line confirms manager status
+        //,then we check if the email is correct. If both are correct, only then can user navigate to management page.
+        for (const [key,value] of Object.entries(snapshotVal)) {          
+          if(key === "status" && value==="manager") {
+            currentlyManager = true;
+          }
+          else if(key==="user" && value.toLowerCase()===userEmail && userEmail.includes("@microlendingmgmtcom") && currentlyManager === true) {
+              navigate('Manager');
+              //console.log("CORRECT" + key + value); line used in testing
+          }
+          else {
+            currentlyManager = false;
+          }
         }
-        else if(snapshot.val().status == "regular") {
-          alert('You need Manager permission!');
-        }
+        
       });
     }
     
     goToRegUserPage = (navigate) => {
-
       navigate('RegUser')
     }
   

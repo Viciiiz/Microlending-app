@@ -8,6 +8,8 @@ import MainScreen from './Screens/MainScreen';
 import ManagerScreen from './Screens/ManagerScreen';
 import RegUserScreen from './Screens/RegUserScreen';
 import HomeScreen from './Screens/HomeScreen';
+import LoanPoolsScreen from './Screens/LoanPoolsScreen';
+import AmountSpecificationScreen from './Screens/Requesting Loan/AmountSpecificationScreen';
 
 //here we establish connection to firebase.
 const firebaseConfig = {
@@ -31,7 +33,9 @@ const AppNavigator = createStackNavigator({
     Home: HomeScreen,
     Main: MainScreen,
     Manager: ManagerScreen,
-    RegUser: RegUserScreen
+    RegUser: RegUserScreen,
+    LoanPools: LoanPoolsScreen,
+    AmountScreen: AmountSpecificationScreen,
   },
     {
       initialRouteName: 'Home'

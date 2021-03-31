@@ -11,6 +11,10 @@ class AmountSpecificationScreen extends React.Component {
         navigate('LoanPools')
     }
 
+    goToDateSpecificationScreen = (navigate) => {
+        navigate('DateScreen')
+    }
+
     render() {
       return (
         <View>
@@ -27,7 +31,8 @@ class AmountSpecificationScreen extends React.Component {
                 onPress={()=>this.goBackToLoanPools(this.props.navigation.navigate)}>
                     <Text style={styles.buttonText}>Back</Text>
                 </Button>
-                <Button style={styles.buttonNext}>
+                <Button style={styles.buttonNext}
+                onPress={()=>this.goToDateSpecificationScreen(this.props.navigation.navigate)}>
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>
             </View>

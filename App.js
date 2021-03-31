@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
 import firebase from 'firebase';
 import { createAppContainer } from 'react-navigation';
@@ -10,6 +9,8 @@ import RegUserScreen from './Screens/RegUserScreen';
 import HomeScreen from './Screens/HomeScreen';
 import LoanPoolsScreen from './Screens/LoanPoolsScreen';
 import AmountSpecificationScreen from './Screens/Requesting Loan/AmountSpecificationScreen';
+import DateSpecification from './Screens/Requesting Loan/DateSpecification';
+import PaymentFrequency from './Screens/Requesting Loan/PaymentFrequency';
 
 //here we establish connection to firebase.
 const firebaseConfig = {
@@ -36,6 +37,8 @@ const AppNavigator = createStackNavigator({
     RegUser: RegUserScreen,
     LoanPools: LoanPoolsScreen,
     AmountScreen: AmountSpecificationScreen,
+    DateScreen: DateSpecification,
+    PaymentPlan: PaymentFrequency,
   },
     {
       initialRouteName: 'Home'

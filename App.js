@@ -11,6 +11,11 @@ import LoanPoolsScreen from './Screens/LoanPoolsScreen';
 import AmountSpecificationScreen from './Screens/Requesting Loan/AmountSpecificationScreen';
 import DateSpecification from './Screens/Requesting Loan/DateSpecification';
 import PaymentFrequency from './Screens/Requesting Loan/PaymentFrequency';
+import VerificationScreen from './Screens/Requesting Loan/VerificationScreen';
+import InterestScreen from './Screens/Requesting Loan/InterestScreen';
+import SummaryScreen from './Screens/Requesting Loan/SummaryScreen';
+import SettingsScreen from './Screens/SettingsScreen';
+import ReceivedRequests from './Screens/ReceivedRequests';
 
 //here we establish connection to firebase.
 const firebaseConfig = {
@@ -39,9 +44,14 @@ const AppNavigator = createStackNavigator({
     AmountScreen: AmountSpecificationScreen,
     DateScreen: DateSpecification,
     PaymentPlan: PaymentFrequency,
+    Verification: VerificationScreen,
+    Interest: InterestScreen,
+    Summary: SummaryScreen,
+    Settings: SettingsScreen,
+    ReceivedRequests: ReceivedRequests
   },
     {
-      initialRouteName: 'Home'
+      initialRouteName: 'Main'//'Home'
     });
 
 const AppContainer = createAppContainer(AppNavigator);

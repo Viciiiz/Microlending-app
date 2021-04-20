@@ -17,6 +17,14 @@ class RegUserScreen extends React.Component {
   goToLoanPools = (navigate) => {
     navigate('LoanPools')
   }
+
+  goToSettings = (navigate) => {
+    navigate('Settings')
+  }
+
+  goToReceivedRequests = (navigate) => {
+    navigate('ReceivedRequests')
+  }
   
     render() {
       return (
@@ -28,11 +36,12 @@ class RegUserScreen extends React.Component {
                 <Text style={styles.buttonText}>Profile</Text>
               </Button>
               <Button style={styles.button}>
-                <Text style={styles.buttonText}>Request loan</Text>
+                <Text style={styles.buttonText}>My Requests</Text>
               </Button>
             </View>
             <View style={{flexDirection:"row"}}>
-              <Button style={styles.button}>
+              <Button style={styles.button}
+              onPress={()=>this.goToReceivedRequests(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>View Loan Requests</Text>
               </Button>
               <Button style={styles.button} 
@@ -41,7 +50,8 @@ class RegUserScreen extends React.Component {
               </Button>
             </View>
             <View style={{flexDirection:"row"}}>
-              <Button style={styles.button}>
+              <Button style={styles.button}
+              onPress={()=>this.goToSettings(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Settings</Text>
               </Button>
               <Button style={styles.button} 
@@ -66,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#cccccc',
     justifyContent: 'center',
     borderRadius: 5,
-    aspectRatio: 7/6,
+    aspectRatio: 7/5,
     marginBottom: 10,
     marginLeft: 5,
     marginRight: 5,

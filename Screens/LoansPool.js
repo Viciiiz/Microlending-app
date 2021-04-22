@@ -2,9 +2,6 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants'; 
 
-// You can import from local files
-import PoolCategory from './components/pool';
-
 // or any pure javascript modules available in npm 
 import { Card } from 'react-native-paper';
 
@@ -25,6 +22,20 @@ export default function App() {
   );
 }
 
+
+const PoolCategory = (props) => {
+return (
+
+<View style={styles.pool}>
+      <View style={styles.poolAdd}>
+        <Text style={styles.poolText}>{props.text}</Text>
+  </View>
+      <View style={styles.exit}></View>
+  </View>
+)
+}
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -33,6 +44,11 @@ const styles = StyleSheet.create({
 
   main: {paddingTop: 65, paddingHorizontal: 15, },
   header: { fontSize: 24, fontWeight: 'Bold',},
-  items: {marginTop: 20,}
+  items: {marginTop: 20,},
+
+  pool: {backgroundColor: 'white', padding: 15, borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', margin: 20,},
+  poolAdd: {flexDirection:'row', alignItems:'center', flexWrap: 'wrap',},
+  poolText: {maxWidth: '80',},
+  exit: {width: 12, height: 12, borderColor: 'red', borderWidth: 2, borderRadius: 5,},
 
 });

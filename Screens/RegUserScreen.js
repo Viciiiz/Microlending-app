@@ -10,8 +10,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
  */
 class RegUserScreen extends React.Component {
     
-  goBackToMain = (navigate) => {
-    navigate('Main')
+  goToLending = (navigate) => {
+    navigate('Lending')
   }
 
   goToLoanPools = (navigate) => {
@@ -25,6 +25,14 @@ class RegUserScreen extends React.Component {
   goToReceivedRequests = (navigate) => {
     navigate('ReceivedRequests')
   }
+
+  goToProfile = (navigate) => {
+    navigate('Profile')
+  }
+
+  goToMyRequests = (navigate) => {
+    navigate('SentRequests')
+  }
   
     render() {
       return (
@@ -32,10 +40,12 @@ class RegUserScreen extends React.Component {
           <Text style={styles.welcomeText}>User Banking Page</Text>
           <View style={styles.view}>
             <View style={{flexDirection:"row"}}>
-              <Button style={styles.button}>
+              <Button style={styles.button}
+              onPress={()=>this.goToProfile(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Profile</Text>
               </Button>
-              <Button style={styles.button}>
+              <Button style={styles.button}
+              onPress={()=>this.goToMyRequests(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>My Requests</Text>
               </Button>
             </View>
@@ -50,15 +60,16 @@ class RegUserScreen extends React.Component {
               </Button>
             </View>
             <View style={{flexDirection:"row"}}>
+              <Button style={styles.button} 
+              onPress={()=>this.goToLending(this.props.navigation.navigate)}
+              >
+                <Text style={styles.buttonText}>Lend</Text>
+              </Button>
               <Button style={styles.button}
               onPress={()=>this.goToSettings(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Settings</Text>
               </Button>
-              <Button style={styles.button} 
-              onPress={()=>this.goBackToMain(this.props.navigation.navigate)}
-              >
-                <Text style={styles.buttonText}>Exit</Text>
-              </Button>
+              
             </View>
             
           </View>

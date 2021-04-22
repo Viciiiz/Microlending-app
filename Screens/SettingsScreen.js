@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import * as React from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { TextInput } from 'react-native-gesture-handler';
-
+import { Button } from 'native-base';
 
 
 //This is where the user manages personal settings
@@ -40,6 +40,14 @@ class Settings extends React.Component{
                         />
                     </View>
                 </View>
+                <View style={styles.buttonView}>
+                    <Button style={styles.button}>
+                        <Text style={styles.buttonText}>Manage Account</Text>
+                    </Button>
+                    <Button style={styles.button}>
+                        <Text style={styles.buttonText}>Advanced Settings</Text>
+                    </Button>
+                </View>
                 <View style={styles.endButtons}>
                     <TouchableOpacity style={styles.logoutButton}
                     onPress={()=>this.goToLogout(this.props.navigation.navigate)}>
@@ -65,7 +73,30 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     availabilityView:{
-        marginTop: 10,
+        marginTop: 5,
+    },
+    button: {
+        // flex: 1,
+        // margin: 10,
+        justifyContent: 'center',
+        backgroundColor: 'black',
+        height: 60,
+        borderWidth: 1,
+        borderBottomColor: 'white',
+        borderTopColor: 'white',
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        marginBottom: 10
+        // marginHorizontal: 15,
+        // borderRadius: 10,
+        // marginTop: 40
+    },
+    buttonText: {
+        fontSize: 19,
+        color: 'white'
+    },
+    buttonView: {
+        marginTop: 95
     },
     deleteButton:{
         backgroundColor: 'red',
@@ -106,7 +137,7 @@ const styles = StyleSheet.create({
         // marginBottom: 70
         height: 70,
         position: 'absolute',
-        bottom: 20
+        bottom: 5
     },
     logoutButton: {
         backgroundColor: 'white',
@@ -138,7 +169,7 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     statusView: {
-        marginTop: 10
+        marginTop: 0
     },
     themeText: {
         marginLeft: 10,
@@ -154,12 +185,12 @@ const styles = StyleSheet.create({
         fontSize: 35,
         alignSelf: 'center',
         marginTop: 20,
-        marginBottom: 30,
+        marginBottom: 15,
         fontWeight: 'bold',
         color: 'white'
     },
     wrapView: {
-        backgroundColor: '#041616',
+        backgroundColor: 'black',
         flex: 1,
     }
 })

@@ -16,6 +16,14 @@ import InterestScreen from './Screens/Requesting Loan/InterestScreen';
 import SummaryScreen from './Screens/Requesting Loan/SummaryScreen';
 import SettingsScreen from './Screens/SettingsScreen';
 import ReceivedRequests from './Screens/ReceivedRequests';
+import GeneralRequests from './Screens/GeneralRequests';
+import Profile from './Screens/Profile/Profile';
+import AddBalance from './Screens/Profile/AddBalance';
+import TransactionHistory from './Screens/Profile/TransactionHistory';
+import Lending from './Screens/Lending/Lending';
+import LendingSummary from './Screens/Lending/LendingSummary';
+import LendingConfirmation from './Screens/Lending/LendingConfirmation';
+import SentRequests from './Screens/SentRequests';
 
 //here we establish connection to firebase.
 const firebaseConfig = {
@@ -48,7 +56,15 @@ const AppNavigator = createStackNavigator({
     Interest: InterestScreen,
     Summary: SummaryScreen,
     Settings: SettingsScreen,
-    ReceivedRequests: ReceivedRequests
+    ReceivedRequests: ReceivedRequests,
+    GeneralRequests: GeneralRequests,
+    Profile: Profile,
+    AddBalance: AddBalance,
+    History: TransactionHistory,
+    Lending: Lending,
+    LendingSummary: LendingSummary,
+    LendingConfirmation: LendingConfirmation,
+    SentRequests: SentRequests
   },
     {
       initialRouteName: 'Main'//'Home'

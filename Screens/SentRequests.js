@@ -3,22 +3,22 @@ import * as React from 'react';
 import { Button } from 'native-base';
 
 
-//This is where the users sees the list of direct requests they received.
-class ReceivedRequests extends React.Component {
+//This is where the users sees the list of loan requests they sent.
+class SentRequests extends React.Component {
     
-    goToGeneralRequests = (navigate) => {
-        navigate("GeneralRequests")
+    goToLoanPools = (navigate) => {
+        navigate("LoanPools")
     }
     
     render() {
       return (
         <View style={styles.viewWrap}>
             <View style={styles.welcomeView}>
-                <Text style = {styles.welcomeText}>You have received 0 loan requests.</Text>
+                <Text style = {styles.welcomeText}>You have sent 0 loan requests.</Text>
                 <View style={styles.buttonView}>
                     <Button style={styles.buttonGeneral}
-                    onPress={()=>this.goToGeneralRequests(this.props.navigation.navigate)}>
-                        <Text style={styles.buttonGeneralText}>View General Requests</Text>
+                    onPress={()=>this.goToLoanPools(this.props.navigation.navigate)}>
+                        <Text style={styles.buttonGeneralText}>Make a request</Text>
                     </Button>
                 </View>
             </View>
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default ReceivedRequests;
+export default SentRequests;

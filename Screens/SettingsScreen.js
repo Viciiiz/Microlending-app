@@ -100,10 +100,13 @@ const styles = StyleSheet.create({
     },
     endButtons: {
         flexDirection: 'row',
-        flex: 1,
-        justifyContent: 'flex-end',
-        marginTop: 150,
-        marginBottom: 70
+        // flex: 1,
+        // justifyContent: 'flex-end',
+        // marginTop: 200,
+        // marginBottom: 70
+        height: 70,
+        position: 'absolute',
+        bottom: 20
     },
     logoutButton: {
         backgroundColor: 'white',

@@ -73,24 +73,34 @@ class RegUserScreen extends React.Component {
 const styles = StyleSheet.create({
   button: {
     flex: 1,
-    backgroundColor: '#cccccc',
+    backgroundColor: 'black',
     justifyContent: 'center',
     borderRadius: 5,
-    aspectRatio: 7/5,
+    aspectRatio: 10/8.5,
     marginBottom: 10,
     marginLeft: 5,
     marginRight: 5,
+    borderWidth: 2,
+    borderColor: 'white',
   },
   buttonText: {
-    color: '#000',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
   },
   screen: {
-    backgroundColor: '#000'
+    backgroundColor: '#000',
+    height: '100%'
+
   },
   view: {
-    height: '100%'
+    // height: '100%',
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
+    // top: '15%',
+    // flex: 1,
+    // alignSelf: 'stretch'
   },
   welcomeText: {
     color: '#ccc',

@@ -7,12 +7,14 @@ import { Button } from 'native-base';
 class ReceivedRequests extends React.Component {
     render() {
       return (
-        <View style={styles.welcomeView}>
-            <Text style = {styles.welcomeText}>You have received 0 loan requests.</Text>
-            <View style={styles.buttonView}>
-                <Button style={styles.buttonGeneral}>
-                    <Text style={styles.buttonGeneralText}>View General Requests</Text>
-                </Button>
+        <View style={styles.viewWrap}>
+            <View style={styles.welcomeView}>
+                <Text style = {styles.welcomeText}>You have received 0 loan requests.</Text>
+                <View style={styles.buttonView}>
+                    <Button style={styles.buttonGeneral}>
+                        <Text style={styles.buttonGeneralText}>View General Requests</Text>
+                    </Button>
+                </View>
             </View>
         </View>
       )
@@ -39,13 +41,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    viewWrap: {
+        height: '100%',
+        backgroundColor: 'black'
+    },
     welcomeText: {
         fontSize: 18,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: 'white'
     },
     welcomeView: {
-        marginTop: 40
-    }
+        marginTop: 40,
+        
+    },
 })
 
 export default ReceivedRequests;

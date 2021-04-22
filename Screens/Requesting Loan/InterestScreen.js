@@ -15,7 +15,7 @@ class InterestScreen extends React.Component {
     
     render() {
       return (
-        <View>
+        <View style={styles.viewWrap}>
             <Text style={styles.interestText}>Your interest:</Text>
             <View style={styles.interestView}>
                 <Text style={styles.amountText}>{'<'}insert amount{'>'}</Text>
@@ -46,7 +46,8 @@ const styles = StyleSheet.create({
     amountText: {
         marginLeft: 40,
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white'
     },
     buttonBack: {
         flex: 1,
@@ -66,16 +67,23 @@ const styles = StyleSheet.create({
     interestText: {
         fontSize: 17,
         margin: 10,
+        color: 'white',
+        marginTop: 15
     },
     interestView: {
-
+        marginBottom: 20,
     },
     totalText: {
         fontSize: 17,
         margin: 10,
+        color: 'white'
     },
     totalView: {
-
+        marginBottom: 20
+    },
+    viewWrap: {
+        backgroundColor: 'black',
+        height: '100%'
     }
 })
 

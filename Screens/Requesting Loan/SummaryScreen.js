@@ -12,7 +12,7 @@ class SummaryScreen extends React.Component {
     
     render() {
       return (
-        <View>
+        <View style={styles.viewWrap}>
             <Text style={styles.text}>Your Loan Request was approved.</Text>
             <View>
                 <View style={styles.textView}>
@@ -51,20 +51,29 @@ const styles = StyleSheet.create({
         flexDirection:'row'
     },
     text: {
-        fontSize: 17,
+        fontSize: 18,
         margin: 10,
+        color: 'white',
+        marginTop: 15
     },
     textVerification: {
-        fontSize: 17,
+        fontSize: 18,
         marginLeft: 20,
+        color: 'white',
+        marginBottom: 10
     },
     textVerificationValue: {
-        fontSize: 17,
+        fontSize: 18,
         marginLeft: 50,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white'
     },
     textView: {
         margin: 10
+    },
+    viewWrap: {
+        backgroundColor: 'black',
+        height: '100%'
     }
 })
 

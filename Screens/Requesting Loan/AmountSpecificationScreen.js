@@ -17,13 +17,15 @@ class AmountSpecificationScreen extends React.Component {
 
     render() {
       return (
-        <View>
-            <Text>You are requesting a loan from {'<'}insert loan pool category name{'>'}</Text>
-            <Text>Specify the amount you would like to borrow:</Text>
+        <View style={styles.viewWrap}>
+            <Text style={styles.welcomeText}>You are requesting a loan from </Text>
+            <Text style={styles.loanName}>{'<'}insert loan pool category name{'>'}</Text>
+            <Text style={styles.welcomeText}>Specify the amount you would like to borrow:</Text>
             <View style={styles.inputAlignment}>
                 <View style={{flexDirection:'row'}}>
                     <Text style={styles.inputText}>$</Text>
-                    <TextInput style={styles.input}/>
+                    <TextInput keyboardType='numeric' 
+                    style={styles.input}/>
                 </View>
             </View>
             <View style={{flexDirection:'row'}}>
@@ -65,6 +67,9 @@ const styles = StyleSheet.create({
         padding: 8,
         margin: 10,
         width: 200,
+        color: 'white',
+        backgroundColor: '#333534',
+        fontSize: 17
     },
     inputAlignment: {
         alignItems: 'center',
@@ -72,7 +77,26 @@ const styles = StyleSheet.create({
     inputText: {
         fontWeight: 'bold',
         fontSize: 20,
+        color: 'white'
     },
+    loanName: {
+        color: 'white',
+        fontSize: 19,
+        marginBottom: 10,
+        marginLeft: 50,
+        fontWeight: 'bold'
+    },
+    welcomeText: {
+        fontSize: 19,
+        margin: 5,
+        marginBottom: 10,
+        marginTop: 10,
+        color: 'white'
+    },
+    viewWrap: {
+        backgroundColor: 'black',
+        height: '100%'
+    }
 })
 
 export default AmountSpecificationScreen;

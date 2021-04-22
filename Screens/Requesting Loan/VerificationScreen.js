@@ -16,7 +16,7 @@ class VerificationScreen extends React.Component {
     
     render() {
       return (
-        <View>
+        <View style={styles.viewWrap}>
             <Text style={styles.text}>Verify your Loan Request</Text>
             <View>
                 <View style={styles.textView}>
@@ -67,20 +67,29 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     text: {
-        fontSize: 17,
+        fontSize: 18,
         margin: 10,
+        color: 'white',
+        marginTop: 15
     },
     textVerification: {
-        fontSize: 17,
+        fontSize: 18,
         marginLeft: 20,
+        color: 'white'
     },
     textVerificationValue: {
-        fontSize: 17,
+        fontSize: 18,
         marginLeft: 50,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white',
     },
     textView: {
-        margin: 10
+        margin: 10,
+        marginBottom: 20
+    },
+    viewWrap: {
+        backgroundColor: 'black',
+        height: '100%'
     }
 })
 

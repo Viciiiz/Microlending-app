@@ -18,7 +18,7 @@ class PaymentFrequency extends React.Component {
     render() {
 
       return (
-        <View>
+        <View style={styles.viewWrap}>
             <View>
                 <Text style={styles.welcomeText}>Enter your desired payment plan: </Text>
             </View>
@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     },
     dropdownItem: {
         width: '100%',
-        height: 40
+        height: 40,
+        // marginLeft: 10
     },
     dropdownView: {
         alignItems: 'flex-start',
@@ -87,9 +88,16 @@ const styles = StyleSheet.create({
         marginBottom: 200,
         marginTop: 5
     },
+    viewWrap: {
+        backgroundColor: 'black',
+        height: '100%'
+    },
     welcomeText: {
         margin: 10,
-        fontSize: 17
+        fontSize: 18,
+        color: 'white',
+        marginBottom: 20,
+        marginTop: 20
     }
 })
 

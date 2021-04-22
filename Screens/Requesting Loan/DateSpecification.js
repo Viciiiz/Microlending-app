@@ -40,14 +40,14 @@ class DateSpecification extends React.Component {
 
     render() {
       return (
-        <View>
+        <View style={styles.viewWrap}>
             <View>
-                <Text>Today is the {this.getCurrentDate()} </Text>
+                <Text style={styles.welcomeText}>Today is the <Text style={styles.dateText}>{this.getCurrentDate()}</Text></Text>
             </View>
             <View>
-                <Text>Specify the date by when you would have paid the whole amount:</Text>
+                <Text style={styles.welcomeText}>Specify the date by when you would have paid the whole amount:</Text>
                 <DatePicker
-                    style={{width: 200}}
+                    style={styles.calendarStyle}//{{width: 200}}
                     date={this.state.date}
                     mode="date"
                     placeholder="select date"
@@ -105,6 +105,26 @@ const styles = StyleSheet.create({
         fontSize: 20,
 
     },
+    calendarStyle: {
+        width: 200,
+        marginTop: 15,
+        marginBottom: 30,
+        marginLeft: 20
+    },
+    dateText: {
+        fontWeight: 'bold'
+    },
+    welcomeText: {
+        fontSize: 19,
+        margin: 10,
+        marginBottom: 10,
+        marginTop: 20,
+        color: 'white'
+    },
+    viewWrap: {
+        backgroundColor: 'black',
+        height: '100%'
+    }
 })
 
 export default DateSpecification;

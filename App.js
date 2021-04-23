@@ -24,6 +24,9 @@ import Lending from './Screens/Lending/Lending';
 import LendingSummary from './Screens/Lending/LendingSummary';
 import LendingConfirmation from './Screens/Lending/LendingConfirmation';
 import SentRequests from './Screens/SentRequests';
+import CreateInterest from './Screens/CreateInterest';
+import CreateLoansPools from './Screens/CreateLoansPools';
+
 
 //here we establish connection to firebase.
 const firebaseConfig = {
@@ -44,6 +47,7 @@ if (!firebase.apps.length) {
 
 //This Stacknavigator is where you specify the names of the pages the app will navigate through. Initialroute is defined (the very first log-in page)
 const AppNavigator = createStackNavigator({
+   
     Home: HomeScreen,
     Main: MainScreen,
     Manager: ManagerScreen,
@@ -64,7 +68,10 @@ const AppNavigator = createStackNavigator({
     Lending: Lending,
     LendingSummary: LendingSummary,
     LendingConfirmation: LendingConfirmation,
-    SentRequests: SentRequests
+    SentRequests: SentRequests,
+    CreateInterest: CreateInterest,
+    CreateLoansPools: CreateLoansPools,
+  
   },
     {
       initialRouteName: 'Main'//'Home'

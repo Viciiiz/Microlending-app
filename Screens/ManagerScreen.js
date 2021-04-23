@@ -5,8 +5,8 @@ import { Button,} from 'native-base';
 class ManagerScreen extends React.Component {
     
 
-  goToAddMicroDollars = (navigate) => {
-    navigate('AddMicroDollars')
+  goToAddBalance = (navigate) => {
+    navigate('AddBalance')
   }
    
   goToCreateLoansPools = (navigate) => {
@@ -38,7 +38,7 @@ class ManagerScreen extends React.Component {
               
              
               <Button style={styles.button}
-              onPress={()=>this.goToAddMicroDollars(this.props.navigation.navigate)}>
+              onPress={()=>this.goToAddBalance(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Micro Dollars</Text>
               </Button>
               <Button style={styles.button}

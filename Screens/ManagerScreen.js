@@ -9,8 +9,8 @@ class ManagerScreen extends React.Component {
     navigate('AddMicroDollars')
   }
    
-  goToLoansPoolScreen = (navigate) => {
-    navigate('LoansPoolScreen')
+  goToCreateLoansPools = (navigate) => {
+    navigate('CreateLoansPools')
   }
 
  goToCreateInterest = (navigate) => {
@@ -42,7 +42,7 @@ class ManagerScreen extends React.Component {
                 <Text style={styles.buttonText}>Micro Dollars</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button}
-              onPress={()=>this.goToLoansPoolScreen(this.props.navigation.navigate)}>
+              onPress={()=>this.goToCreateLoansPools(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Create Loans</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button}

@@ -41,11 +41,17 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E8EAED',
+    backgroundColor: 'black',
   },
 
-  main: {paddingTop: 65, paddingHorizontal: 15, },
-  header: { fontSize: 24, fontWeight: 'Bold',},
+  main: {paddingTop: 65, paddingHorizontal: 15,},
+  header: { 
+    color: '#ccc',
+    fontWeight: 'bold',
+    fontSize: 40,
+    textAlign: 'center',
+    margin: '5%',
+    marginBottom: '10%'},
   items: {marginTop: 20,},
 
 

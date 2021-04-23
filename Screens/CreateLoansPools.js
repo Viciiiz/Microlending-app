@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants'; 
+import { Text, View, StyleSheet, KeyboardAvoidingView } from 'react-native';
 
-//For the manager to create loans
 
-export default function App() {
+class CreateLoansPools extends React.Component {
+ render() {
   return (
     <View style={styles.container}>
 
@@ -17,8 +16,12 @@ export default function App() {
           </View>
         </View>
 
+      <KeyboardAvoidingView style={styles.writeTaskWrapper}></KeyboardAvoidingView>
+
+
     </View>
   );
+}
 }
 
 
@@ -45,9 +48,12 @@ const styles = StyleSheet.create({
   header: { fontSize: 24, fontWeight: 'Bold',},
   items: {marginTop: 20,},
 
-  pool: {backgroundColor: 'white', padding: 15, borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', margin: 20,},
-  poolAdd: {flexDirection:'row', alignItems:'center', flexWrap: 'wrap',},
-  poolText: {maxWidth: '80',},
-  exit: {width: 12, height: 12, borderColor: 'red', borderWidth: 2, borderRadius: 5,},
+
+pool: {backgroundColor: 'white', padding: 15, borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', margin: 20,},
+poolAdd: {flexDirection:'row', alignItems:'center', flexWrap: 'wrap',},
+poolText: {maxWidth: '80',},
+exit: {width: 12, height: 12, borderColor: 'red', borderWidth: 2, borderRadius: 5,},
 
 });
+
+export default CreateLoansPools;

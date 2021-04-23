@@ -50,7 +50,7 @@ const AppNavigator = createStackNavigator({
    
     Home: HomeScreen,
     Main: MainScreen,
-    Manager: ManagerScreen,
+    ManagerScreen: ManagerScreen,
     RegUser: RegUserScreen,
     LoanPools: LoanPoolsScreen,
     AmountScreen: AmountSpecificationScreen,

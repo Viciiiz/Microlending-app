@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity, Button, } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, } from 'react-native';
 import * as React from 'react';
-
+import { Button,} from 'native-base';
 
 class ManagerScreen extends React.Component {
     
@@ -34,29 +34,31 @@ class ManagerScreen extends React.Component {
           <Text style={styles.welcomeText}>Manager Banking Page</Text>
           
           <View style={styles.view}>
-            <View style={{flexDirection:"row", alignItems: 'center', justifyContent: 'space-between',}}>
+           <View style={{flexDirection:"row"}}>
               
              
-              <TouchableOpacity style={styles.button}
+              <Button style={styles.button}
               onPress={()=>this.goToAddMicroDollars(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Micro Dollars</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button}
+              </Button>
+              <Button style={styles.button}
               onPress={()=>this.goToCreateLoansPools(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Create Loans</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button}
+              </Button>
+                <Button style={styles.button}
               onPress={()=>this.goToCreateInterest(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>Create Interest</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button}
+              </Button>
+              </View>
+              <View style={{flexDirection:"row"}}>
+              <Button style={styles.button}
               onPress={()=>this.goToProfile(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>My Profile</Text>
-              </TouchableOpacity>
-               <TouchableOpacity style={styles.button}
+              </Button>
+               <Button style={styles.button}
               onPress={()=>this.goToSettings(this.props.navigation.navigate)}>
                 <Text style={styles.buttonText}>My Settings</Text>
-              </TouchableOpacity>
+              </Button>
       
             </View>
           </View>
@@ -68,27 +70,26 @@ class ManagerScreen extends React.Component {
 }
 
 
-//Styles will go here
 const styles = StyleSheet.create({
   button: {
     flex: 1,
     backgroundColor: 'black',
     justifyContent: 'center',
-    borderRadius: 4,
+    borderRadius: 5,
     aspectRatio: 10/8.5,
-    marginBottom: 310,
-    marginLeft: 4,
-    marginRight: 4,
+    marginBottom: 60,
+    marginLeft: 5,
+    marginRight: 5,
     borderWidth: 2,
     borderColor: 'white',
-    
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 20, 
     textAlign: 'center',
   },
+
   screen: {
     backgroundColor: '#000',
     height: '100%'
@@ -109,4 +110,6 @@ const styles = StyleSheet.create({
     marginBottom: '10%'
   }
 })
+
+
 export default ManagerScreen;

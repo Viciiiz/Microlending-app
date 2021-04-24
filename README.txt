@@ -18,3 +18,18 @@ to then set the account with that status level in the Firebase Realtime DB!
 Tools and Frameworks Used:
 React Native with Expo
 Firebase DB and Firebase Authentication
+
+Responsibilities:
+To add a user to the site.
+The ability to  add ‘micro-dollars’ to their account.
+To create a bank manager login
+For a bank manager to specify interest rates
+For a bank manager to be able to create different banking/loan pool categories
+To have a user be able to be able to create multiple accounts
+To have a user specify how much micro-dollars to automatically go into the banking/loan pool(s)
+For the user to request a loan from any of the loan pools.
+
+Contributions:
+Aleks: Log-In/Sign-Up
+Miraj: Management
+Victor: Regular User

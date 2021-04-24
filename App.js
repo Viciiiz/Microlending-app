@@ -24,7 +24,7 @@ import Lending from './Screens/Lending/Lending';
 import LendingSummary from './Screens/Lending/LendingSummary';
 import LendingConfirmation from './Screens/Lending/LendingConfirmation';
 import SentRequests from './Screens/SentRequests';
-import CreateInterest from './Screens/CreateInterest';
+//import CreateInterest from './Screens/CreateInterest';
 import CreateLoansPools from './Screens/CreateLoansPools';
 
 
@@ -69,7 +69,7 @@ const AppNavigator = createStackNavigator({
     LendingSummary: LendingSummary,
     LendingConfirmation: LendingConfirmation,
     SentRequests: SentRequests,
-    CreateInterest: CreateInterest,
+    //CreateInterest: CreateInterest,
     CreateLoansPools: CreateLoansPools,
   
   },

@@ -69,7 +69,7 @@ const AppNavigator = createStackNavigator({
     LendingSummary: LendingSummary,
     LendingConfirmation: LendingConfirmation,
     SentRequests: SentRequests,
-    //CreateInterest: CreateInterest,
+    //CreateInterest: CreateInterest, //Commented this out since it was causing the "main not found" expo error. Feel free to uncomment once the component is built!
     CreateLoansPools: CreateLoansPools,
   
   },

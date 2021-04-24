@@ -5,24 +5,78 @@ import { Button } from 'native-base';
 
 //This is where the user sees the interests linked to their loan request.
 class InterestScreen extends React.Component {
+    
+    constructor(props){
+        super(props)
+        this.state = {
+            total: '',
+            frequency: this.props.navigation.state.params.frequency,
+            date: this.props.navigation.state.params.date,
+            userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+        }
+    }
+    
+    
     goBackToPaymentPlanScreen = (navigate) => {
         navigate('PaymentPlan')
     }
 
-    goToVerificationScreen = (navigate) => {
-        navigate('Verification')
+    // goToVerificationScreen = (navigate) => {
+    //     navigate('Verification')
+    // }
+
+    interestDuration = () => {
+        var a = true
+        if (a) {
+            this.setState({total: '4'})
+        }
+    }
+
+    tempInterestRate = () => {
+        var interest = 0;
+        switch (this.state.frequency){
+            case "daily": 
+                interest = "0.5";
+                break;
+            case "weekly": 
+                interest = "2.5";
+                break;
+            case "monthly": 
+                interest = "10";
+                break;
+            default:
+                interest = "0"
+        }
+        return interest;
+    }
+
+    interestAmount = () => {
+        return (parseFloat(this.tempInterestRate()) * parseFloat(this.props.navigation.state.params.userLoanRequestAmount)) / 100;
+    }
+
+    totalAmount = () => {
+        return this.interestAmount()+parseFloat(this.state.userLoanRequestAmount);
+    }
+
+    updateStateTotal = () => {
+        this.setState({total: this.totalAmount()})
     }
     
     render() {
+
+      if (this.state.total == ''){
+          this.updateStateTotal();
+      }
+
       return (
         <View style={styles.viewWrap}>
             <Text style={styles.interestText}>Your interest:</Text>
             <View style={styles.interestView}>
-                <Text style={styles.amountText}>{'<'}insert amount{'>'}</Text>
+                <Text style={styles.amountText}>( {this.tempInterestRate()} % )   ----{'>'}   $ {this.interestAmount()}</Text>
             </View>
             <Text style={styles.totalText}>Your total:</Text>
             <View style={styles.totalView}>
-                <Text style={styles.amountText}>{'<'}insert amount{'>'}</Text>
+                <Text style={styles.amountText}>{this.totalAmount()}</Text>
             </View>
             <View style={{flexDirection:'row'}}>
                 <Button style={styles.buttonBack}
@@ -31,7 +85,15 @@ class InterestScreen extends React.Component {
                     <Text style={styles.buttonText}>Back</Text>
                 </Button>
                 <Button style={styles.buttonNext}
-                onPress={()=>this.goToVerificationScreen(this.props.navigation.navigate)}
+                onPress={()=> {
+                    this.props.navigation.navigate('Verification', {
+                        userLoanRequestAmount: this.state.userLoanRequestAmount, 
+                        date: this.state.date,
+                        frequency: this.state.frequency,
+                        total: this.state.total
+                        })
+                    }
+                }
                 >
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>

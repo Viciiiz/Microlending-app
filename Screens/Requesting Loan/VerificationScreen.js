@@ -6,30 +6,52 @@ import { Button } from 'native-base';
 
 //This is where the user verifies their transaction before confirming.
 class VerificationScreen extends React.Component {
+    
+    constructor(props){
+        super(props)
+        this.state = {
+            ID: '',
+            total: this.props.navigation.state.params.total,
+            frequency: this.props.navigation.state.params.frequency,
+            date: this.props.navigation.state.params.date,
+            userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+        }
+    }
+
     goBackToInterestScreen = (navigate) => {
         navigate('Interest')
     }
 
-    goToSummaryScreen = (navigate) => {
-        navigate('Summary')
+    // goToSummaryScreen = (navigate) => {
+    //     navigate('Summary')
+    // }
+
+    generateID = () => {
+        var random = Math.floor(Math.random() * 100000) + 1; // random number between 1 and 100000
+        this.setState({ID: random})
     }
     
     render() {
+
+      if (this.state.ID == ''){
+          this.generateID();
+      }
+
       return (
         <View style={styles.viewWrap}>
             <Text style={styles.text}>Verify your Loan Request</Text>
             <View>
                 <View style={styles.textView}>
                     <Text style={styles.textVerification}>Total amount:</Text>
-                    <Text style={styles.textVerificationValue}>{'<'}insert amount{'>'}</Text>
+                    <Text style={styles.textVerificationValue}>$ {this.state.total}</Text>
                 </View>
                 <View style={styles.textView}>
                     <Text style={styles.textVerification}>Amount paid by:</Text>
-                    <Text style={styles.textVerificationValue}>{'<'}insert due date{'>'}</Text>
+                    <Text style={styles.textVerificationValue}>{this.props.navigation.state.params.date}</Text>
                 </View>
                 <View style={styles.textView}>
                     <Text style={styles.textVerification}>Payment frequency:</Text>
-                    <Text style={styles.textVerificationValue}>{'<'}insert frequency{'>'}</Text>
+                    <Text style={styles.textVerificationValue}>{this.props.navigation.state.params.frequency}</Text>
                 </View>
             </View>
             <View style={{flexDirection:'row'}}>
@@ -39,7 +61,13 @@ class VerificationScreen extends React.Component {
                     <Text style={styles.buttonText}>Back</Text>
                 </Button>
                 <Button style={styles.buttonNext}
-                onPress={()=>this.goToSummaryScreen(this.props.navigation.navigate)}
+                 onPress={()=>this.props.navigation.navigate('Summary',{
+                    userLoanRequestAmount: this.state.userLoanRequestAmount, 
+                    date: this.state.date,
+                    frequency: this.state.frequency,
+                    total: this.state.total,
+                    ID: this.state.ID
+                })}
                 >
                     <Text style={styles.buttonText}>Confirm</Text>
                 </Button>

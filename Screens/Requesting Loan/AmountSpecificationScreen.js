@@ -7,12 +7,25 @@ import { Button } from 'native-base';
 //This is where the user specifies the amount they want to borrow
 class AmountSpecificationScreen extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            userLoanRequestAmount: '',
+        }
+        this.passAmount = this.passAmount.bind(this);
+    }
+    
     goBackToLoanPools = (navigate) => {
         navigate('LoanPools')
     }
 
-    goToDateSpecificationScreen = (navigate) => {
-        navigate('DateScreen')
+    // goToDateSpecificationScreen = (navigate) => {
+    //     navigate('DateScreen')
+    // }
+
+    // local data between screens (communicate props)
+    passAmount = (amount) => {
+        this.setState({userLoanRequestAmount: amount})
     }
 
     render() {
@@ -25,6 +38,8 @@ class AmountSpecificationScreen extends React.Component {
                 <View style={{flexDirection:'row'}}>
                     <Text style={styles.inputText}>$</Text>
                     <TextInput keyboardType='numeric' 
+                     value = {this.state.userLoanRequestAmount}
+                     onChangeText={this.passAmount} 
                     style={styles.input}/>
                 </View>
             </View>
@@ -34,7 +49,8 @@ class AmountSpecificationScreen extends React.Component {
                     <Text style={styles.buttonText}>Back</Text>
                 </Button>
                 <Button style={styles.buttonNext}
-                onPress={()=>this.goToDateSpecificationScreen(this.props.navigation.navigate)}>
+                onPress={()=>this.props.navigation.navigate('DateScreen', 
+                {userLoanRequestAmount: this.state.userLoanRequestAmount})}>
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>
             </View>

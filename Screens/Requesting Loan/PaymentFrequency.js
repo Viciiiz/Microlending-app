@@ -7,13 +7,22 @@ import DropDownPicker from 'react-native-dropdown-picker';
 //This is where the user specifies their desired payment plan (every how many days will they pay).
 class PaymentFrequency extends React.Component {
     
+    constructor(props){
+        super(props)
+        this.state = {
+            frequency: '',
+            date: this.props.navigation.state.params.date,
+            userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+        }
+    }
+    
     goBackToDateSpecificationScreen = (navigate) => {
         navigate('DateScreen')
     }
 
-    goToInterestScreen = (navigate) => {
-        navigate('Interest')
-    }
+    // goToInterestScreen = (navigate) => {
+    //     navigate('Interest')
+    // }
     
     render() {
 
@@ -35,9 +44,9 @@ class PaymentFrequency extends React.Component {
                     // style={{backgroundColor: '#fafafa'}}
                     itemStyle={styles.dropdownItem}
                     // dropDownStyle={{backgroundColor: '#fafafa'}}
-                    // onChangeItem={item => this.setState({
-                    //   status: item.value
-                    // })}
+                    onChangeItem={item => this.setState({
+                      frequency: item.value
+                    })}
                 />
             </View>
             <View style={{flexDirection:'row'}}>
@@ -46,7 +55,11 @@ class PaymentFrequency extends React.Component {
                     <Text style={styles.buttonText}>Back</Text>
                 </Button>
                 <Button style={styles.buttonNext}
-                onPress={()=>this.goToInterestScreen(this.props.navigation.navigate)}>
+                onPress={()=>this.props.navigation.navigate('Interest', {
+                    userLoanRequestAmount: this.state.userLoanRequestAmount, 
+                    date: this.state.date,
+                    frequency: this.state.frequency
+                })}>
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>
             </View>

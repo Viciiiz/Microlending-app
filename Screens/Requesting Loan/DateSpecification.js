@@ -10,7 +10,10 @@ class DateSpecification extends React.Component {
 
     constructor(props){
         super(props)
-        this.state = {date:JSON.stringify(this.getCurrentDate())}
+        this.state = {
+            date:JSON.stringify(this.getCurrentDate()),
+            userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+        }
     }
     
     getCurrentDate=()=>{
@@ -34,9 +37,9 @@ class DateSpecification extends React.Component {
         navigate('AmountScreen')
     }
 
-    goToPaymentFrequency = (navigate) => {
-        navigate('PaymentPlan')
-    }
+    // goToPaymentFrequency = (navigate) => {
+    //     navigate('PaymentPlan')
+    // }
 
     render() {
       return (
@@ -77,7 +80,8 @@ class DateSpecification extends React.Component {
                     <Text style={styles.buttonText}>Back</Text>
                 </Button>
                 <Button style={styles.buttonNext}
-                onPress={()=>this.goToPaymentFrequency(this.props.navigation.navigate)}
+                  onPress={()=>this.props.navigation.navigate('PaymentPlan', 
+                  {userLoanRequestAmount: this.state.userLoanRequestAmount, date: this.state.date})}
                 >
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>

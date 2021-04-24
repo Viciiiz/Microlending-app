@@ -1,23 +1,57 @@
 import { StyleSheet, Text, View } from 'react-native';
 import * as React from 'react';
 import { Button } from 'native-base';
-
+import firebase from 'firebase'
 
 
 //This is the summary of the user's request.
 class SummaryScreen extends React.Component {
+    
+    constructor(props){
+        super(props)
+        this.state = {
+            ID: this.props.navigation.state.params.ID,
+            total: this.props.navigation.state.params.total,
+            frequency: this.props.navigation.state.params.frequency,
+            date: this.props.navigation.state.params.date,
+            userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+        }
+    }
+    
     goToUserScreen = (navigate) => {
         navigate('RegUser')
     }
+
+    writeIDtoDB = (ID, email) => {
+        try {
+            // var emailadd = String(email);
+            firebase.database().ref('LoanRequests/').update({
+            [ID]: {
+                  email: email,
+                  LoanPool: "none",
+                  amount: this.state.total,
+                  date: this.state.date,
+                  frequency: this.state.frequency,
+              }
+            });
+    
+        } catch (error) {
+            console.log(error.toString())
+        }
+     }
     
     render() {
+
+      var emailA = firebase.auth().currentUser.email.replace(".","");
+      this.writeIDtoDB(this.state.ID, emailA)
+
       return (
         <View style={styles.viewWrap}>
             <Text style={styles.text}>Your Loan Request was approved.</Text>
             <View>
                 <View style={styles.textView}>
                     <Text style={styles.textVerification}>Loan ID:</Text>
-                    <Text style={styles.textVerificationValue}>{'<'}Generate ID{'>'}</Text>
+                    <Text style={styles.textVerificationValue}>{this.props.navigation.state.params.ID}</Text>
                 </View>
             </View>
             <View style={styles.buttonView}>

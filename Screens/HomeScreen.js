@@ -14,7 +14,9 @@ class HomeScreen extends React.Component {
       })
     }
 
-    //This function is used to add a new entry to the users table in Firebase DB. 
+    //This function is used to add a new entry to the users table in Firebase DB. First we need to get the email (since we add it to the DB) in string form, and then we "update"
+    //the users object in the realtime DB. The object's key should be the string of the email, and then it should have that email and their status (of management or reg user) added to
+    //users object.
     writeUserData = (email, status) => {
       try {
         //var database = firebase.database();

@@ -28,6 +28,9 @@ For a bank manager to be able to create different banking/loan pool categories
 To have a user be able to be able to create multiple accounts
 To have a user specify how much micro-dollars to automatically go into the banking/loan pool(s)
 For the user to request a loan from any of the loan pools.
+Reset user's account by sending an password reset email (New feature)
+Block access to manager screen if a user doesn't have manager status (New feature)
+
 
 Contributions:
 Aleks: Log-In/Sign-Up

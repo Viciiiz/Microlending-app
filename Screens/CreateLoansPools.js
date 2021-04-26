@@ -1,42 +1,89 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, KeyboardAvoidingView } from 'react-native';
+//import * as React from 'react';
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
+import {
+  Text,
+  View,
+  StyleSheet,
+  KeyboardAvoidingView,
+  TextInput,
+  TouchableOpacity,
+  Platform,
+  Keyboard,
+  ScrollView,
+  navigation,
+} from 'react-native';
 
+function CreateLoansPools() {
+  const [entry, setEntry] = useState('');
+  const [entryItems, setEntryItems] = useState([]);
 
-class CreateLoansPools extends React.Component {
- render() {
+  const addEntry = () => {
+    Keyboard.dismiss();
+    setEntryItems([...entryItems, entry]);
+    setEntry('');
+  };
+
+  const deleteEntry = (index) => {
+    let poolsEntry = [...entryItems];
+    poolsEntry.splice(index, 1);
+    setEntryItems(poolsEntry);
+  };
+
   return (
     <View style={styles.container}>
-
+      <ScrollView style={styles.scrollView}>
         <View style={styles.main}>
-          <Text style={styles.header}>Loan Categories:</Text>
-          
-          <View style={styles.items}>
-              <PoolCategory text={'Pool Entry 1'} />
-              <PoolCategory text={'Pool Entry 2'} />
+          <Text style={styles.header}>Loans Category</Text>
+
+          <View
+            style={styles.entry}
+            onPress={() => {
+              navigation.navigate('CreateInterest', { loanName: entry });
+            }}>
+            {entryItems.map((pool, index) => {
+              return (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => deleteEntry(index)}>
+                  <PoolCategory text={pool} />
+                </TouchableOpacity>
+              );
+            })}
           </View>
         </View>
+      </ScrollView>
 
-      <KeyboardAvoidingView style={styles.writeTaskWrapper}></KeyboardAvoidingView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.kbm}>
+        <TextInput
+          style={styles.input1}
+          placeholder={'Enter Loan'}
+          value={entry}
+          onChangeText={(text) => setEntry(text)}
+        />
 
-
+        <TouchableOpacity onPress={() => addEntry()}>
+          <View style={styles.submit}>
+            <Text style={styles.logo}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </View>
   );
 }
-}
-
 
 const PoolCategory = (props) => {
-return (
-
-<View style={styles.pool}>
+  return (
+    <View style={styles.pool}>
       <View style={styles.poolAdd}>
-        <Text style={styles.poolText}>{props.text}</Text>
-  </View>
-      <View style={styles.exit}></View>
-  </View>
-)
-}
-
+        <Text style={styles.poolText}> Loan Category : {props.text} </Text>
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -44,22 +91,78 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
 
-  main: {paddingTop: 65, paddingHorizontal: 15,},
-  header: { 
-    color: '#ccc',
+  main: { paddingTop: 50, paddingHorizontal: 15 },
+  header: {
+    color: '#d3d3d3',
     fontWeight: 'bold',
     fontSize: 40,
     textAlign: 'center',
-    margin: '5%',
-    marginBottom: '10%'},
-  items: {marginTop: 20,},
+    margin: '1',
+    marginBottom: '10%',
+  },
+  entry: { marginTop: 5 },
 
+  pool: {
+    backgroundColor: 'white',
+    borderBottomColor: 'red',
+    borderTopColor: '#d3d3d3',
+    borderLeftColor: '#d3d3d3',
+    borderRightColor: '#d3d3d3',
+    borderWidth: 5,
+    padding: 15,
+    borderRadius: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    margin: 2,
+  },
 
-pool: {backgroundColor: 'white', padding: 15, borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', margin: 20,},
-poolAdd: {flexDirection:'row', alignItems:'center', flexWrap: 'wrap',},
-poolText: {maxWidth: '80',},
-exit: {width: 12, height: 12, borderColor: 'red', borderWidth: 2, borderRadius: 5,},
+  poolAdd: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
 
+  poolText: { maxWidth: '80' },
+
+  kbm: {
+    position: 'absolute',
+    bottom: 25,
+    left: 20,
+    width: '100',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  input1: {
+    paddingVertical: 15,
+    width: 220,
+    paddingHorizontal: '15',
+    textAlign: 'center',
+    backgroundColor: 'white',
+    borderRadius: 60,
+    borderBottomColor: 'red',
+    borderWidth: 5,
+    left: 5,
+    borderTopColor: '#d3d3d3',
+    borderLeftColor: '#d3d3d3',
+    borderRightColor: '#d3d3d3',
+    bottom: 75,
+  },
+
+  submit: {
+    width: 60,
+    height: 60,
+    backgroundColor: 'white',
+    borderRadius: 60,
+    left: 30,
+    justifyContent: 'center',
+    borderBottomColor: '#39FF14',
+    borderWidth: 5,
+    borderTopColor: '#d3d3d3',
+    borderLeftColor: '#d3d3d3',
+    borderRightColor: '#d3d3d3',
+    bottom: 75,
+  },
+
+  logo: { textAlign: 'center' },
 });
 
 export default CreateLoansPools;

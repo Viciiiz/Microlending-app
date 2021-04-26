@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 40,
     textAlign: 'center',
-    margin: '1',
+    margin: 1,////////
     marginBottom: '10%',
   },
   entry: { marginTop: 5 },
@@ -139,17 +139,17 @@ const styles = StyleSheet.create({
 
   poolAdd: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
 
-  poolText: { maxWidth: '80' },
+  poolText: { maxWidth: 80 }, ///////
 
   poolAdd2: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
 
-  poolText2: { maxWidth: '80' },
+  poolText2: { maxWidth: 80 }, //////
 
   kbm: {
     position: 'absolute',
     bottom: 25,
     left: 20,
-    width: '100',
+    width: 100,  ////////
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   input2: {
     paddingVertical: 15,
     width: 220,
-    paddingHorizontal: '15',
+    paddingHorizontal: '15%', //////
     textAlign: 'center',
     backgroundColor: 'white',
     borderRadius: 60,

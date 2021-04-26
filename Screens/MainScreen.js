@@ -24,7 +24,7 @@ class MainScreen extends React.Component {
             currentlyManager = true;
           }
           else if(key==="user" && value.toLowerCase()===userEmail && userEmail.includes("@microlendingmgmtcom") && currentlyManager === true) {
-              navigate('Manager');
+              navigate('ManagerScreen');
               //console.log("CORRECT" + key + value); line used in testing
           }
           else {

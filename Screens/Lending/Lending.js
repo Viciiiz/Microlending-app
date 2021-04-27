@@ -8,12 +8,22 @@ import DropDownPicker from 'react-native-dropdown-picker';
 //This is where the user specifies the amount they want to lend
 class Lending extends React.Component {
 
+    constructor(props){
+        super(props)
+        this.state = {
+            toWhichLoan: '',
+            toWhom: '',
+            lentAmount: '',
+        }
+        this.passAmount = this.passAmount.bind(this);
+    }
+    
     goBackToRegUser = (navigate) => {
         navigate('RegUser')
     }
 
-    goToLendingConfirmation = (navigate) => {
-        navigate('LendingConfirmation')
+    passAmount = (amount) => {
+        this.setState({lentAmount: amount})
     }
 
     render() {
@@ -24,8 +34,7 @@ class Lending extends React.Component {
                 <DropDownPicker
                     items={[
                         {label: 'Any', value: 'Any'},
-                        {label: 'Loan Pool 1', value: 'loan1'},
-                        {label: 'Loan Pool 2', value: 'loan2'}, 
+                        {label: 'Default Pool', value: 'Default'}, 
                     ]}
                     // style = {styles.dropdown}
                     // defaultValue={this.userStatus}
@@ -33,9 +42,9 @@ class Lending extends React.Component {
                     // style={{backgroundColor: '#fafafa'}}
                     itemStyle={styles.dropdownItem}
                     // dropDownStyle={{backgroundColor: '#fafafa'}}
-                    // onChangeItem={item => this.setState({
-                    //   status: item.value
-                    // })}
+                    onChangeItem={item => this.setState({
+                      toWhichLoan: item.value
+                    })}
                 />
             </View>
             <Text style={styles.welcomeText}>Who will be able to borrow your loan?</Text>
@@ -53,9 +62,9 @@ class Lending extends React.Component {
                     // style={{backgroundColor: '#fafafa'}}
                     itemStyle={styles.dropdownItem}
                     // dropDownStyle={{backgroundColor: '#fafafa'}}
-                    // onChangeItem={item => this.setState({
-                    //   status: item.value
-                    // })}
+                    onChangeItem={item => this.setState({
+                      toWhom: item.value
+                    })}
                 />
             </View>
             <Text style={styles.welcomeText}>Specify the amount you would like to lend:</Text>
@@ -63,6 +72,8 @@ class Lending extends React.Component {
                 <View style={{flexDirection:'row'}}>
                     <Text style={styles.inputText}>$</Text>
                     <TextInput keyboardType='numeric' 
+                    value = {this.state.userLoanRequestAmount}
+                    onChangeText={this.passAmount}
                     style={styles.input}/>
                 </View>
             </View>
@@ -72,7 +83,11 @@ class Lending extends React.Component {
                     <Text style={styles.buttonText}>Back</Text>
                 </Button>
                 <Button style={styles.buttonNext}
-                onPress={()=>this.goToLendingConfirmation(this.props.navigation.navigate)}>
+                onPress={()=>this.props.navigation.navigate('LendingConfirmation', {
+                    toWhichLoan: this.state.toWhichLoan, 
+                    toWhom: this.state.toWhom,
+                    lentAmount: this.state.lentAmount,
+                })}>
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>
             </View>

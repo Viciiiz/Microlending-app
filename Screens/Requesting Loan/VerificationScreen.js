@@ -15,6 +15,7 @@ class VerificationScreen extends React.Component {
             frequency: this.props.navigation.state.params.frequency,
             date: this.props.navigation.state.params.date,
             userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+            loanCategoryName: this.props.navigation.state.params.loanCategoryName
         }
     }
 
@@ -42,6 +43,10 @@ class VerificationScreen extends React.Component {
             <Text style={styles.text}>Verify your Loan Request</Text>
             <View>
                 <View style={styles.textView}>
+                    <Text style={styles.textVerification}>Loan Catergory:</Text>
+                    <Text style={styles.textVerificationValue}>{this.state.loanCategoryName}</Text>
+                </View>
+                <View style={styles.textView}>
                     <Text style={styles.textVerification}>Total amount:</Text>
                     <Text style={styles.textVerificationValue}>$ {this.state.total}</Text>
                 </View>
@@ -66,7 +71,8 @@ class VerificationScreen extends React.Component {
                     date: this.state.date,
                     frequency: this.state.frequency,
                     total: this.state.total,
-                    ID: this.state.ID
+                    ID: this.state.ID,
+                    loanCategoryName: this.state.loanCategoryName
                 })}
                 >
                     <Text style={styles.buttonText}>Confirm</Text>

@@ -13,6 +13,7 @@ class DateSpecification extends React.Component {
         this.state = {
             date:JSON.stringify(this.getCurrentDate()),
             userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+            loanCategoryName: this.props.navigation.state.params.loanCategoryName
         }
     }
     
@@ -81,7 +82,11 @@ class DateSpecification extends React.Component {
                 </Button>
                 <Button style={styles.buttonNext}
                   onPress={()=>this.props.navigation.navigate('PaymentPlan', 
-                  {userLoanRequestAmount: this.state.userLoanRequestAmount, date: this.state.date})}
+                  {
+                    userLoanRequestAmount: this.state.userLoanRequestAmount, 
+                    date: this.state.date,
+                    loanCategoryName: this.state.loanCategoryName
+                })}
                 >
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>

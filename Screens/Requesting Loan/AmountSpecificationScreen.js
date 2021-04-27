@@ -10,6 +10,7 @@ class AmountSpecificationScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            loanCategoryName: this.props.navigation.state.params.loanCategoryName,
             userLoanRequestAmount: '',
         }
         this.passAmount = this.passAmount.bind(this);
@@ -32,7 +33,7 @@ class AmountSpecificationScreen extends React.Component {
       return (
         <View style={styles.viewWrap}>
             <Text style={styles.welcomeText}>You are requesting a loan from </Text>
-            <Text style={styles.loanName}>{'<'}insert loan pool category name{'>'}</Text>
+            <Text style={styles.loanName}>{this.state.loanCategoryName}</Text>
             <Text style={styles.welcomeText}>Specify the amount you would like to borrow:</Text>
             <View style={styles.inputAlignment}>
                 <View style={{flexDirection:'row'}}>
@@ -50,7 +51,10 @@ class AmountSpecificationScreen extends React.Component {
                 </Button>
                 <Button style={styles.buttonNext}
                 onPress={()=>this.props.navigation.navigate('DateScreen', 
-                {userLoanRequestAmount: this.state.userLoanRequestAmount})}>
+                {
+                    userLoanRequestAmount: this.state.userLoanRequestAmount,
+                    loanCategoryName: this.state.loanCategoryName
+                })}>
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>
             </View>

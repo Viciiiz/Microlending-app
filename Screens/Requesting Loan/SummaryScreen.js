@@ -15,6 +15,7 @@ class SummaryScreen extends React.Component {
             frequency: this.props.navigation.state.params.frequency,
             date: this.props.navigation.state.params.date,
             userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+            loanCategoryName: this.props.navigation.state.params.loanCategoryName
         }
     }
     
@@ -28,7 +29,7 @@ class SummaryScreen extends React.Component {
             firebase.database().ref('LoanRequests/').update({
             [ID]: {
                   email: email,
-                  LoanPool: "none",
+                  LoanPool: this.state.loanCategoryName,
                   amount: this.state.total,
                   date: this.state.date,
                   frequency: this.state.frequency,

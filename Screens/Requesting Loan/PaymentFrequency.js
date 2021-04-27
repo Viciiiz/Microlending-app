@@ -13,6 +13,7 @@ class PaymentFrequency extends React.Component {
             frequency: '',
             date: this.props.navigation.state.params.date,
             userLoanRequestAmount: this.props.navigation.state.params.userLoanRequestAmount,
+            loanCategoryName: this.props.navigation.state.params.loanCategoryName
         }
     }
     
@@ -58,7 +59,8 @@ class PaymentFrequency extends React.Component {
                 onPress={()=>this.props.navigation.navigate('Interest', {
                     userLoanRequestAmount: this.state.userLoanRequestAmount, 
                     date: this.state.date,
-                    frequency: this.state.frequency
+                    frequency: this.state.frequency,
+                    loanCategoryName: this.state.loanCategoryName
                 })}>
                     <Text style={styles.buttonText}>Next</Text>
                 </Button>

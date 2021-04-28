@@ -37,11 +37,9 @@ function CreateLoansPools() {
         <View style={styles.main}>
           <Text style={styles.header}>Loans Category</Text>
 
-          <View
-            style={styles.entry}
-            onPress={() => {
-              navigation.navigate('CreateInterest', { loanName: entry });
-            }}>
+          <View style={styles.entry}>
+  
+           
             {entryItems.map((pool, index) => {
               return (
                 <TouchableOpacity
@@ -79,7 +77,7 @@ const PoolCategory = (props) => {
   return (
     <View style={styles.pool}>
       <View style={styles.poolAdd}>
-        <Text style={styles.poolText}> Loan Category : {props.text} </Text>
+        <Text style={styles.poolText}> Loan : {props.text} </Text>
       </View>
     </View>
   );
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 40,
     textAlign: 'center',
-    margin: 1, ////////////
+    margin: 1, 
     marginBottom: '10%',
   },
   entry: { marginTop: 5 },

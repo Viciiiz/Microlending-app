@@ -16,10 +16,13 @@ import {
 } from 'react-native';
 
 function CreateInterest() {
-  const [entry, setEntry] = useState('');
+
+
+  
+
   const [entry2, setEntry2] = useState('');
 
-  const [entryItems, setEntryItems] = useState([]);
+
   const [entryItems2, setEntryItems2] = useState([]);
 
   const addEntry = () => {
@@ -36,6 +39,7 @@ function CreateInterest() {
 
   return (
     <View style={styles.container}>
+
       <ScrollView style={styles.scrollView}>
         <View style={styles.main}>
           <Text style={styles.header}>Interest Rate</Text>
@@ -55,7 +59,7 @@ function CreateInterest() {
       </ScrollView>
 
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height' }
         style={styles.kbm}>
         <TextInput
           style={styles.input2}
@@ -71,6 +75,7 @@ function CreateInterest() {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
+
     </View>
   );
 }
@@ -79,7 +84,7 @@ const PoolCategory = (props) => {
   return (
     <View style={styles.pool}>
       <View style={styles.poolAdd}>
-        <Text style={styles.poolText}> Loan: </Text>
+        <Text style={styles.poolText}>Interest Rate</Text>
       </View>
       <View style={styles.pool2}>
         <View style={styles.poolAdd2}>
@@ -139,7 +144,7 @@ const styles = StyleSheet.create({
 
   poolAdd: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
 
-  poolText: { maxWidth: 80 }, ///////
+  poolText: { maxWidth: 80, textAlign: "center", }, ///////
 
   poolAdd2: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
 
@@ -156,6 +161,7 @@ const styles = StyleSheet.create({
   },
 
   input2: {
+    margin: 12,
     paddingVertical: 15,
     width: 220,
     paddingHorizontal: '15%', //////
